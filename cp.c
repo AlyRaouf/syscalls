@@ -13,11 +13,11 @@ int main(int argc, char *argv[]) {
         exit(-3);
     }
 
-    char buffer[1024];
+    char buf[1024];
     size_t bytes;
 
-    while ((bytes = fread(buffer, 1, sizeof(buffer), source)) > 0) {
-        fwrite(buffer, 1, bytes, dest);
+    while ((bytes = fread(buf, 1, 1024, source)) > 0) {
+        fwrite(buf, 1, bytes, dest);
     }
 
     fclose(source);
