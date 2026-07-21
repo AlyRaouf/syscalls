@@ -2,18 +2,18 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-    if (argc != 3) return 1;
+    if (argc != 3) exit(-1);
 
     FILE *source = fopen(argv[1], "rb");
-    if (!source) return 1;
+    if (!source) exit(-2);
 
     FILE *dest = fopen(argv[2], "wb");
     if (!dest) {
         fclose(source);
-        return 1;
+        exit(-3);
     }
 
-    char buffer[4096];
+    char buffer[1024];
     size_t bytes;
 
     while ((bytes = fread(buffer, 1, sizeof(buffer), source)) > 0) {
